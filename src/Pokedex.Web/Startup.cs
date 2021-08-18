@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Pokedex.Application;
 
 namespace Pokedex.Web
 {
@@ -27,7 +28,17 @@ namespace Pokedex.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddApplication();
+            services.AddHttpContextAccessor();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+            }).ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+            services.AddHealthChecks();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pokedex.Web", Version = "v1" });
@@ -49,6 +60,8 @@ namespace Pokedex.Web
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseHealthChecks("/health");
 
             app.UseEndpoints(endpoints =>
             {
