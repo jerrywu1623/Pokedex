@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  pokedex.web:
+    image: ${DOCKER_REGISTRY-}pokedexweb
+    build:
+      context: .
+      dockerfile: src/Pokedex.Web/Dockerfile
