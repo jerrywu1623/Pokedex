@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -15,7 +16,7 @@ namespace Pokedex.Infrastructure.Services
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<PokemonService> _logger;
-        private const string POKEMON_SPEC_URI = "/api/v2/pokemon-species/{0}";
+        private const string POKEMON_SPEC_URI = "pokemon-species/{0}";
 
         public PokemonService(ILogger<PokemonService> logger, IHttpClientFactory httpClientFactory)
         {
@@ -27,8 +28,11 @@ namespace Pokedex.Infrastructure.Services
         {
             try
             {
+                _logger.LogInformation("start calling PokemonService");
                 var client = _httpClientFactory.CreateClient(Constants.POKEMON_API_CLIENT_NAME);
                 var pokemonSpec = await client.GetFromJsonAsync<PokemonSpec>(string.Format(POKEMON_SPEC_URI, name), cancellationToken);
+                
+                _logger.LogInformation($"end calling PokemonService, response: {JsonSerializer.Serialize(pokemonSpec)}");
                 return pokemonSpec;
             }
             catch(HttpRequestException e)
