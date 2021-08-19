@@ -1,17 +1,18 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Pokedex.Application;
+using Pokedex.Application.Common.Interfaces;
+using Pokedex.Application.ViewModels;
+using Pokedex.Domain.Entities;
+using Pokedex.Infrastructure.Services;
+using Pokedex.Web.Filters;
 
 namespace Pokedex.Web
 {
@@ -30,13 +31,27 @@ namespace Pokedex.Web
 
             services.AddApplication();
             services.AddHttpContextAccessor();
-            services.AddControllers().AddJsonOptions(options =>
+            services.AddControllers(options =>
+                {
+                    options.Filters.Add(new ApiExceptionFilterAttribute());
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                }).ConfigureApiBehaviorOptions(options =>
+                {
+                    options.SuppressModelStateInvalidFilter = true;
+                });
+
+            services.AddScoped<IPokemonService, PokemonService>();
+
+            
+            services.AddHttpClient(Constants.POKEMON_API_CLIENT_NAME, c =>
             {
-                options.JsonSerializerOptions.IgnoreNullValues = true;
-            }).ConfigureApiBehaviorOptions(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
+                var baseUrl = Configuration.GetValue<string>("PokemonApiUrl");
+                c.BaseAddress = new Uri(baseUrl);
             });
+            
             services.AddHealthChecks();
             
             services.AddSwaggerGen(c =>
@@ -54,6 +69,12 @@ namespace Pokedex.Web
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pokedex.Web v1"));
             }
+            
+            TypeAdapterConfig<PokemonSpec, PokemonSpecVm>
+                .NewConfig()
+                .Map(dest => dest.isLegendary, src => src.is_legendary)
+                .Map(dest => dest.habitat, src => $"{src.habitat.name}")
+                .Map(dest => dest.description, src => $"{src.flavor_text_entries.FirstOrDefault().flavor_text}");
 
             app.UseHttpsRedirection();
 
