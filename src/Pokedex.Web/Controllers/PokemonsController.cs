@@ -13,5 +13,12 @@ namespace Pokedex.Web.Controllers
         {
             return await Mediator.Send(new GetPokemonSpecQuery() { name = name }, cancellationToken);
         }
+
+        [HttpGet]
+        [Route("translated/{name}")]
+        public async Task<ActionResult<PokemonSpecVm>> GetTranslated(string name, CancellationToken cancellationToken)
+        {
+            return await Mediator.Send(new GetPokemonSpecTranslatedQuery() { name = name });
+        }
     }
 }
