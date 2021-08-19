@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Pokedex.Domain.Enums;
+using Pokedex.Application.Common.Enums;
 
 namespace Pokedex.Application.Common.Interfaces
 {

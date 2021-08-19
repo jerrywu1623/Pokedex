@@ -6,9 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Pokedex.Application;
+using Pokedex.Application.Common.Enums;
 using Pokedex.Application.Common.Interfaces;
 using Pokedex.Domain.Entities;
-using Pokedex.Domain.Enums;
 
 namespace Pokedex.Infrastructure.Services
 {

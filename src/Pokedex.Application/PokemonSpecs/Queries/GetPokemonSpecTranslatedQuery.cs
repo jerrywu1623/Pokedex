@@ -6,10 +6,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mapster;
 using MediatR;
+using Pokedex.Application.Common.Enums;
 using Pokedex.Application.Common.Exceptions;
 using Pokedex.Application.Common.Interfaces;
 using Pokedex.Application.ViewModels;
-using Pokedex.Domain.Enums;
 
 namespace Pokedex.Application.PokemonSpecs.Queries
 {

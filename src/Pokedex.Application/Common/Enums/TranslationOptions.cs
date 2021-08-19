@@ -1,4 +1,4 @@
-﻿namespace Pokedex.Domain.Enums
+﻿namespace Pokedex.Application.Common.Enums
 {
     public enum TranslationOptions
     {
