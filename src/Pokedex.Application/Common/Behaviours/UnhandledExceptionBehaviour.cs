@@ -26,7 +26,7 @@ namespace Pokedex.Application.Common.Behaviours
             {
                 var requestName = typeof(TRequest).Name;
 
-                _logger.LogError(ex, $"picchu Request: Exception for Request {requestName} {JsonSerializer.Serialize(request)}");
+                _logger.LogError(ex, $"pokedex Request: Exception for Request {requestName} {JsonSerializer.Serialize(request)}");
 
                 throw;
             }
