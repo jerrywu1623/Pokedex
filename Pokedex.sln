@@ -7,13 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B1F052EB-CBC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex.Web", "src\Pokedex.Web\Pokedex.Web.csproj", "{02ADF2DB-16E0-4EF5-9BC4-ED32BE58C18D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Application", "src\Pokedex.Application\Pokedex.Application.csproj", "{C57CE515-DCBB-479F-9A2F-A4A5174B32F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex.Application", "src\Pokedex.Application\Pokedex.Application.csproj", "{C57CE515-DCBB-479F-9A2F-A4A5174B32F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Domain", "src\Pokedex.Domain\Pokedex.Domain.csproj", "{F6FC3CD6-0342-44C2-B470-F23D71AEE7CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex.Domain", "src\Pokedex.Domain\Pokedex.Domain.csproj", "{F6FC3CD6-0342-44C2-B470-F23D71AEE7CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Infrastructure", "src\Pokedex.Infrastructure\Pokedex.Infrastructure.csproj", "{3A25FB50-DA72-4D58-B305-2ED75AB0E9DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokedex.Infrastructure", "src\Pokedex.Infrastructure\Pokedex.Infrastructure.csproj", "{3A25FB50-DA72-4D58-B305-2ED75AB0E9DB}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7A58403D-60DC-4965-93B9-FBCD9E930D2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Application.UnitTests", "tests\Pokedex.Application.UnitTests\Pokedex.Application.UnitTests.csproj", "{3969E416-EC0D-4C40-B374-382D343237B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Infrastructure.UnitTests", "tests\Pokedex.Infrastructure.UnitTests\Pokedex.Infrastructure.UnitTests.csproj", "{3132788B-12A0-47A6-B689-7CB86AB680B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Application.IntegrationTests", "tests\Pokedex.Application.IntegrationTests\Pokedex.Application.IntegrationTests.csproj", "{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,18 @@ Global
 		{7A58403D-60DC-4965-93B9-FBCD9E930D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A58403D-60DC-4965-93B9-FBCD9E930D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A58403D-60DC-4965-93B9-FBCD9E930D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3969E416-EC0D-4C40-B374-382D343237B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3969E416-EC0D-4C40-B374-382D343237B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3969E416-EC0D-4C40-B374-382D343237B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3969E416-EC0D-4C40-B374-382D343237B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +70,9 @@ Global
 		{C57CE515-DCBB-479F-9A2F-A4A5174B32F2} = {B1F052EB-CBC9-4989-B23B-77E8F7B3D954}
 		{F6FC3CD6-0342-44C2-B470-F23D71AEE7CD} = {B1F052EB-CBC9-4989-B23B-77E8F7B3D954}
 		{3A25FB50-DA72-4D58-B305-2ED75AB0E9DB} = {B1F052EB-CBC9-4989-B23B-77E8F7B3D954}
+		{3969E416-EC0D-4C40-B374-382D343237B1} = {0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}
+		{3132788B-12A0-47A6-B689-7CB86AB680B9} = {0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03} = {0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEC4E470-2E51-4A6E-82B5-F796E75E0E8C}
