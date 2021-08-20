@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Application.UnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Infrastructure.UnitTests", "tests\Pokedex.Infrastructure.UnitTests\Pokedex.Infrastructure.UnitTests.csproj", "{3132788B-12A0-47A6-B689-7CB86AB680B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Application.IntegrationTests", "tests\Pokedex.Application.IntegrationTests\Pokedex.Application.IntegrationTests.csproj", "{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3132788B-12A0-47A6-B689-7CB86AB680B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{3A25FB50-DA72-4D58-B305-2ED75AB0E9DB} = {B1F052EB-CBC9-4989-B23B-77E8F7B3D954}
 		{3969E416-EC0D-4C40-B374-382D343237B1} = {0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}
 		{3132788B-12A0-47A6-B689-7CB86AB680B9} = {0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}
+		{5DB2CBB2-D591-4246-9F13-5B6D2ED3FA03} = {0BAF7CDA-D5BC-4F1C-A257-FBFAE19FBF5F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEC4E470-2E51-4A6E-82B5-F796E75E0E8C}
