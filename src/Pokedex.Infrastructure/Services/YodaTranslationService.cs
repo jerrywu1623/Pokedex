@@ -24,7 +24,7 @@ namespace Pokedex.Infrastructure.Services
             _logger = logger;
         }
 
-        public TranslationOptions TransactionOption => TranslationOptions.Yoda;
+        public TranslationOptions TranslationOptions => TranslationOptions.Yoda;
 
         public async Task<string> TranslateAsync(string text, CancellationToken cancellationToken = default)
         {

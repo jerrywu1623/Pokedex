@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,9 +8,11 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
+using Pokedex.Application.Common.Enums;
 using Pokedex.Application.Common.Interfaces;
 using Pokedex.Application.ViewModels;
 using Pokedex.Domain.Entities;
@@ -41,8 +44,11 @@ namespace Pokedex.Application.IntegrationTests
 
             var pokemonService = services.FirstOrDefault(d => d.ServiceType == typeof(IPokemonService));
             services.Remove(pokemonService);
+            services.RemoveAll(typeof(ITranslationService));
 
             services.AddScoped<IPokemonService>(_ => SetupMockPokmonService());
+            services.AddScoped<ITranslationService>(_ => SetupMockYodaTranslationService());
+            services.AddScoped<ITranslationService>(_ => SetupMockShakespeareTranslationService());
             
             TypeAdapterConfig<PokemonSpec, PokemonSpecVm>
                 .NewConfig()
@@ -75,9 +81,40 @@ namespace Pokedex.Application.IntegrationTests
                     },
                     flavor_text_entries = new []{new Flavor_Text_Entry(){flavor_text = "It was created by\na scientist after\nyears of horrific\fgene splicing and\nDNA engineering\nexperiments."}}
                 });
+            fakePokemonService.Setup(f => f.GetPokemonSpecAsync("wormadam", CancellationToken.None))
+                .ReturnsAsync(new PokemonSpec
+                {
+                    name = "wormadam",
+                    is_legendary = false,
+                    habitat = new Habitat
+                    {
+                        name = "rare"
+                    },
+                    flavor_text_entries = new []{new Flavor_Text_Entry(){flavor_text = "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."}}
+                });
             fakePokemonService.Setup(f => f.GetPokemonSpecAsync("aaa", CancellationToken.None))
                 .ReturnsAsync((PokemonSpec)null);
             return fakePokemonService.Object;
+        }
+
+        private ITranslationService SetupMockYodaTranslationService()
+        {
+            var fakeYodaTranslationService = new Mock<ITranslationService>();
+            fakeYodaTranslationService.SetupGet(f => f.TranslationOptions).Returns(TranslationOptions.Yoda);
+            fakeYodaTranslationService.Setup(f => f.TranslateAsync(It.IsAny<string>(), CancellationToken.None))
+                .ReturnsAsync("yoda_test");
+                
+            return fakeYodaTranslationService.Object;
+        }
+        
+        private ITranslationService SetupMockShakespeareTranslationService()
+        {
+            var fakeYodaTranslationService = new Mock<ITranslationService>();
+            fakeYodaTranslationService.SetupGet(f => f.TranslationOptions).Returns(TranslationOptions.Shakespeare);
+            fakeYodaTranslationService.Setup(f => f.TranslateAsync(It.IsAny<string>(), CancellationToken.None))
+                .ReturnsAsync("shakespeare_test");
+                
+            return fakeYodaTranslationService.Object;
         }
         
         public async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)

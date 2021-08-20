@@ -6,7 +6,7 @@ namespace Pokedex.Application.Common.Interfaces
 {
     public interface ITranslationService
     {
-        TranslationOptions TransactionOption { get; }
+        TranslationOptions TranslationOptions { get; }
         Task<string> TranslateAsync(string text, CancellationToken cancellationToken);
     }
 }

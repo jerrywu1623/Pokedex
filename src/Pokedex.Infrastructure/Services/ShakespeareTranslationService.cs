@@ -24,7 +24,7 @@ namespace Pokedex.Infrastructure.Services
             _logger = logger;
         }
 
-        public TranslationOptions TransactionOption => TranslationOptions.Shakespeare;
+        public TranslationOptions TranslationOptions => TranslationOptions.Shakespeare;
 
         public async Task<string> TranslateAsync(string text, CancellationToken cancellationToken = default)
         {

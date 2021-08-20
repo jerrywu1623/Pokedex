@@ -44,11 +44,11 @@ namespace Pokedex.Application.PokemonSpecs.Queries
 
             if (string.Equals(pokemonVm.habitat, HABITAT_CAVE, StringComparison.OrdinalIgnoreCase) || pokemonVm.isLegendary)
             {
-                description = await _translationServices.FirstOrDefault(w => w.TransactionOption == TranslationOptions.Yoda).TranslateAsync(description, cancellationToken);
+                description = await _translationServices.FirstOrDefault(w => w.TranslationOptions == TranslationOptions.Yoda).TranslateAsync(description, cancellationToken);
             }
             else
             {
-                description = await _translationServices.FirstOrDefault(w => w.TransactionOption == TranslationOptions.Shakespeare).TranslateAsync(description, cancellationToken);
+                description = await _translationServices.FirstOrDefault(w => w.TranslationOptions == TranslationOptions.Shakespeare).TranslateAsync(description, cancellationToken);
             }
 
             pokemonVm.description = Regex.Replace(description, RegexConstants.NEW_LINE, " ");
