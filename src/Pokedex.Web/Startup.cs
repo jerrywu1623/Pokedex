@@ -44,11 +44,18 @@ namespace Pokedex.Web
                 });
 
             services.AddScoped<IPokemonService, PokemonService>();
-
+            services.AddScoped<ITranslationService, YodaTranslationService>();
+            services.AddScoped<ITranslationService, ShakespeareTranslationService>();
             
             services.AddHttpClient(Constants.POKEMON_API_CLIENT_NAME, c =>
             {
                 var baseUrl = Configuration.GetValue<string>("PokemonApiUrl");
+                c.BaseAddress = new Uri(baseUrl);
+            });
+            
+            services.AddHttpClient(Constants.TRANSLATION_API_CLIENT_NAME, c =>
+            {
+                var baseUrl = Configuration.GetValue<string>("FunTranslationApiUrl");
                 c.BaseAddress = new Uri(baseUrl);
             });
             

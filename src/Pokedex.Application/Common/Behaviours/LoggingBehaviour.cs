@@ -36,6 +36,7 @@ namespace Pokedex.Application.Common.Behaviours
                 {
                     _logger.LogInformation($"[PROPS] {JsonSerializer.Serialize(request)}");
                     response = await next();
+                    _logger.LogInformation($"[RES] {JsonSerializer.Serialize(response)}");
                 }
                 finally
                 {
