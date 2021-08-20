@@ -19,3 +19,10 @@ This is a RESTful API application which contains 2 endpoints:
     "habitat": "rare",
     "isLegendary": true
 }
+````
+
+# Production Deployment
+1. Open `appsettings.Production.json` in `Pokedex.Web`
+2. Change the Uri of Elasticsearch
+3. Open `docker-compose.override.yml` in root solution
+4. Change `ASPNETCORE_ENVIRONMENT` to `Production`
