@@ -32,7 +32,7 @@ namespace Pokedex.Application.PokemonSpecs.Queries
 
         public async Task<PokemonSpecVm> Handle(GetPokemonSpecTranslatedQuery request, CancellationToken cancellationToken)
         {
-            var pokemonSpec = await _pokemonService.GetPokemonSpec(request.name, cancellationToken);
+            var pokemonSpec = await _pokemonService.GetPokemonSpecAsync(request.name, cancellationToken);
             
             if (pokemonSpec == null)
             {
