@@ -6,6 +6,6 @@ namespace Pokedex.Application.Common.Interfaces
 {
     public interface IPokemonService
     {
-        Task<PokemonSpec> GetPokemonSpec(string name, CancellationToken cancellationToken);
+        Task<PokemonSpec> GetPokemonSpecAsync(string name, CancellationToken cancellationToken);
     }
 }

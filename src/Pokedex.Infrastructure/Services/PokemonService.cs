@@ -23,7 +23,7 @@ namespace Pokedex.Infrastructure.Services
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<PokemonSpec> GetPokemonSpec(string name, CancellationToken cancellationToken = default)
+        public async Task<PokemonSpec> GetPokemonSpecAsync(string name, CancellationToken cancellationToken = default)
         {
             try
             {
